@@ -122,7 +122,6 @@ function Main({ userId, groupCode, onLogout }: { userId: string; groupCode: stri
               data.reload()
             }}
             onDelete={async (id) => {
-              if (!confirm('Apagar este treino? O XP será removido.')) return
               await store.deleteWorkout(id)
               data.reload()
             }}

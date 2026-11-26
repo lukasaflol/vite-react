@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { fmtMinutes, fmtNum, fmtVolume, workoutType, workoutVolume, type ScoredWorkout } from '../game'
 import type { Reaction } from '../types'
 import type { Player } from '../useGroup'
@@ -54,6 +55,7 @@ function FeedItem({ p, w, mine, meId, reactions, onReact, onDelete }: {
 }) {
   const t = workoutType(w.type)
   const vol = workoutVolume(w)
+  const [confirming, setConfirming] = useState(false)
   return (
     <article className="card feed-item">
       <div className="feed-head">
@@ -96,7 +98,14 @@ function FeedItem({ p, w, mine, meId, reactions, onReact, onDelete }: {
             </button>
           )
         })}
-        {mine && <button className="react del" onClick={onDelete}>Apagar</button>}
+        {mine && !confirming && <button className="react del" onClick={() => setConfirming(true)}>Apagar</button>}
+        {mine && confirming && (
+          <span className="confirm-del">
+            <small>Apagar e remover o XP?</small>
+            <button className="react danger" onClick={onDelete}>Sim, apagar</button>
+            <button className="react" onClick={() => setConfirming(false)}>Cancelar</button>
+          </span>
+        )}
       </div>
     </article>
   )

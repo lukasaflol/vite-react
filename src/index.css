@@ -263,3 +263,6 @@ label.check input { width: auto; }
 .confetti { position: absolute; inset: 0; pointer-events: none; }
 .confetti i { position: absolute; top: -10px; width: 8px; height: 14px; border-radius: 2px; animation: fall 1.8s ease-in forwards; }
 @keyframes fall { to { transform: translateY(520px) rotate(540deg); opacity: 0; } }
+.confirm-del { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.confirm-del small { color: var(--muted); font-size: .78rem; }
+.react.danger { background: rgba(248, 113, 113, .15); border-color: var(--danger); color: var(--danger); font-weight: 700; }
